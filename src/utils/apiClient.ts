@@ -1,11 +1,12 @@
 import { apiConfig } from "../constant/config";
+import { Route } from "../constant/endpoints";
 
 class ApiClient {
   private baseUrl;
   constructor() {
     this.baseUrl = apiConfig.apiUrl;
   }
-  async Request(endpoint: string, options: RequestInit = {}) {
+  async Request(endpoint: Route, options: RequestInit = {}) {
     const token = localStorage.getItem("auth_token");
     const headers = {
       "Content-Type": "application/json",
@@ -23,7 +24,7 @@ class ApiClient {
     }
   }
 
-  Post(endpoint: string, data: any, options = {}) {
+  Post(endpoint: Route, data: any, options = {}) {
     return this.Request(endpoint, {
       ...options,
       method: "POST",
