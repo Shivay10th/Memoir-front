@@ -9,15 +9,20 @@ import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Layout from "./components/Layout/layout";
 import SignUp from "./screens/SignUp";
+import { AuthRoute } from "./routes/routes";
 
 export const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
         <Route path="" element={<Home />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
-        <Route path="/editor" element={<CustomEditor />}></Route>
+        <Route element={<AuthRoute />}>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+        </Route>
+        <Route element={<AuthRoute requiredAuth={true} />}>
+          <Route path="/editor" element={<CustomEditor />}></Route>
+        </Route>
       </Route>
     )
   );

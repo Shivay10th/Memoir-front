@@ -1,29 +1,32 @@
-import { Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { authService } from "../../services/auth/authService";
 
 const Nav = () => {
+  const navigate = useNavigate();
   return (
     <>
-      <ul>
-        <Link to={""}>Home</Link>
-        {!localStorage.getItem("auth_token") && (
+      <nav>
+        <NavLink to={""}>Home</NavLink>
+        {!authService.isAuthenticated() && (
           <>
-            <Link to={"login"}>Login</Link>
-            <Link to="signup">Sign Up</Link>
+            <NavLink to={"login"}>Login</NavLink>
+            <NavLink to="signup">Sign Up</NavLink>
           </>
         )}
-        {localStorage.getItem("auth_token") && (
+        {authService.isAuthenticated() && (
           <>
-            <Link to={"editor"}>Create Blog</Link>
+            <NavLink to={"editor"}>Create Blog</NavLink>
             <button
               onClick={() => {
                 localStorage.removeItem("auth_token");
+                navigate("/");
               }}
             >
               Log Out
             </button>
           </>
         )}
-      </ul>
+      </nav>
     </>
   );
 };
