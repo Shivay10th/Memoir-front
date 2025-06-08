@@ -1,5 +1,4 @@
-import { apiConfig } from "../constant/config";
-import { Route } from "../constant/endpoints";
+import { apiConfig, Route } from "@/constant";
 
 class ApiClient {
   private baseUrl;
@@ -18,13 +17,20 @@ class ApiClient {
         ...options,
         headers,
       });
+      if (response.status === 500) {
+        throw new Error("Something went wrong");
+      }
+      if (response.status === 401) {
+        throw new Error("Unauthorized");
+      }
+      if (!response.ok) throw new Error(response.statusText);
       return await response.json();
     } catch (error) {
-      throw error;
+      console.log(error);
     }
   }
 
-  Post(endpoint: Route, data: any, options = {}) {
+  Post(endpoint: Route, data: unknown, options = {}) {
     return this.Request(endpoint, {
       ...options,
       method: "POST",
