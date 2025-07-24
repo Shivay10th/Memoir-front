@@ -1,8 +1,14 @@
+import { useAuth } from "@/services/authentication/auth";
 import { CircularProgress } from "@mui/material";
-import { useAuth } from "../../../services/auth/authService";
 import { Outlet, Navigate } from "react-router-dom";
 
-export const AuthRoute = ({ requiredAuth = false, redirectTo = "/" }) => {
+export const AuthRoute = ({
+  requiredAuth = false,
+  redirectTo = "/",
+}: {
+  requiredAuth: false;
+  redirectTo: string;
+}) => {
   const { isAuthenticated, isLoading } = useAuth();
   console.log(isLoading);
   if (isLoading) return <CircularProgress />;

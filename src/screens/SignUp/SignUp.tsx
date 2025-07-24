@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { StyledBox, StyledForm } from "@/components/styles";
-import { useAuth } from "@/services/auth/authService";
+import { useAuth } from "@/services/authentication/auth";
 
 const SignUp = () => {
   const {
@@ -14,9 +14,7 @@ const SignUp = () => {
       password: "",
     },
   });
-  const { signUp, isLoading, error } = useAuth();
-  console.log(isLoading);
-  console.log(error);
+  return null;
   return (
     <>
       <StyledBox>

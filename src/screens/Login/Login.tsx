@@ -1,37 +1,14 @@
 import { Button, TextField } from "@mui/material";
 import { StyledBox } from "../../components/styles/StyledBox.styled";
 import { StyledForm } from "../../components/styles/StyledForm.styled";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../services/auth/authService";
+import { useLogin } from "./Login.controller";
+
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: "ar1@1hourmail.com",
-      password: "",
-    },
-  });
-  const { login } = useAuth();
-  const navigate = useNavigate();
+  const { errors, handleSubmit, register, handleLogin } = useLogin();
   return (
     <StyledBox>
-      <div>{/* <Controller render={} name={""} > */}</div>
       <div>
-        <StyledForm
-          onSubmit={handleSubmit(async (data) => {
-            const { email, password } = data;
-            try {
-              await login({ email, password });
-              navigate("/");
-            } catch (error) {
-              console.log(error);
-            }
-          })}
-        >
+        <StyledForm onSubmit={handleSubmit(handleLogin)}>
           <TextField
             {...register("email", { required: "Email is required" })}
             label="Email"
@@ -50,7 +27,7 @@ const Login = () => {
             type="Password"
           />
           <p>{errors.password?.message}</p>
-          <Button type="submit" variant="outlined">
+          <Button type="submit" variant="contained">
             Login
           </Button>
         </StyledForm>
