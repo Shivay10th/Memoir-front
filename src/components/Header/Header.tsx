@@ -6,27 +6,28 @@ import {
   NavSidBar,
 } from "./Header.style";
 import { CloseIcon, MenuIcon } from "@/assets/icons";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { ROUTES_PATH } from "../core";
 
 const Header = () => {
-  // const navigate = useNavigate();
-  // const { isAuthenticated } = useAuth();
   const [openMenu, setOpenMenu] = useState(false);
+  const toggleSideBar = useCallback(() => {
+    setOpenMenu((previous) => !previous);
+  }, []);
   return (
     <HeaderWrapper>
       <NavBar>
         <div>hello</div>
-
-        <IconButton
-          className="icon-button"
-          onClick={() => setOpenMenu((previous) => !previous)}
-        >
+        <IconButton className="icon-button" onClick={toggleSideBar}>
           {openMenu ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
         <NavSidBar openMenu={openMenu}>
-          <NavigationLink to={ROUTES_PATH.LOGIN}>Login</NavigationLink>
-          <NavigationLink to={ROUTES_PATH.SIGN_UP}>Sign Up</NavigationLink>
+          <NavigationLink onClick={toggleSideBar} to={ROUTES_PATH.LOGIN}>
+            Login
+          </NavigationLink>
+          <NavigationLink onClick={toggleSideBar} to={ROUTES_PATH.SIGN_UP}>
+            Sign Up
+          </NavigationLink>
         </NavSidBar>
       </NavBar>
     </HeaderWrapper>

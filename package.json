@@ -17,6 +17,7 @@
   "dependencies": {
     "@mui/material": "^6.1.8",
     "@mui/styled-engine-sc": "^6.1.8",
+    "@reduxjs/toolkit": "^2.8.2",
     "@tanstack/react-query": "^5.77.2",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.7.4",
@@ -26,6 +27,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.2",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.27.0",
     "slate": "^0.103.0",
     "slate-react": "^0.110.1",
@@ -37,6 +39,7 @@
     "@eslint/json": "^0.12.0",
     "@parcel/transformer-svg-jsx": "^2.15.2",
     "@tanstack/eslint-plugin-query": "^5.78.0",
+    "buffer": "^6.0.3",
     "eslint": "^9.28.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.2.0",
