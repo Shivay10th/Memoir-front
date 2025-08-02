@@ -1,7 +1,6 @@
 import { Button, TextField } from "@mui/material";
-import { StyledBox } from "../../components/styles/StyledBox.styled";
-import { StyledForm } from "../../components/styles/StyledForm.styled";
 import { useLogin } from "./Login.controller";
+import { StyledBox, StyledForm } from "@/components";
 
 const Login = () => {
   const { errors, handleSubmit, register, handleLogin } = useLogin();

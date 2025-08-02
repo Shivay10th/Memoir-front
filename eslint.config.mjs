@@ -35,4 +35,16 @@ export default defineConfig([
       "react/react-in-jsx-scope": "off",
     },
   },
+  {
+    files: ["**/*.test.ts"],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+    rules: {
+      "no-unused-vars": "warn",
+      "no-undef": "warn",
+    },
+  },
 ]);
