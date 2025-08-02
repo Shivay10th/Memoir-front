@@ -18,7 +18,8 @@
     "outDir": "./dist",
     "paths": {
       "@/*": ["./src/*"],
-      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"],
+      "test-utils": ["./src/utils/test"]
     }
   },
   "include": ["src", "src/custom.d.ts"]
