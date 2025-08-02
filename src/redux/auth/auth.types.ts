@@ -4,5 +4,5 @@ export interface UserCredentials {
 }
 
 export interface LoginResponse {
-  access_token: string;
+  accessToken: string;
 }
