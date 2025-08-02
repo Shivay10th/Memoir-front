@@ -1,7 +1,7 @@
 import { AlertColor } from "@mui/material";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const TOAST_STORE_NAME = "toast";
+export const TOAST_STORE_NAME = "toast";
 
 interface ToastState {
   open: boolean;

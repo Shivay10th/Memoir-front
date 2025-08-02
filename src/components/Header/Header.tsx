@@ -1,4 +1,4 @@
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import {
   HeaderWrapper,
   NavBar,
@@ -8,12 +8,15 @@ import {
 import { CloseIcon, MenuIcon } from "@/assets/icons";
 import { useCallback, useState } from "react";
 import { ROUTES_PATH } from "../core";
+import { useAuth } from "@/hooks";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const toggleSideBar = useCallback(() => {
     setOpenMenu((previous) => !previous);
   }, []);
+  const { isAuthenticated, logOut } = useAuth();
+
   return (
     <HeaderWrapper>
       <NavBar>
@@ -22,12 +25,25 @@ const Header = () => {
           {openMenu ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
         <NavSidBar openMenu={openMenu}>
-          <NavigationLink onClick={toggleSideBar} to={ROUTES_PATH.LOGIN}>
-            Login
-          </NavigationLink>
-          <NavigationLink onClick={toggleSideBar} to={ROUTES_PATH.SIGN_UP}>
-            Sign Up
-          </NavigationLink>
+          {!isAuthenticated ? (
+            <>
+              <NavigationLink onClick={toggleSideBar} to={ROUTES_PATH.LOGIN}>
+                Login
+              </NavigationLink>
+              <NavigationLink onClick={toggleSideBar} to={ROUTES_PATH.SIGN_UP}>
+                Sign Up
+              </NavigationLink>
+            </>
+          ) : (
+            <Button
+              onClick={() => {
+                logOut();
+                toggleSideBar();
+              }}
+            >
+              LogOut
+            </Button>
+          )}
         </NavSidBar>
       </NavBar>
     </HeaderWrapper>
