@@ -3,6 +3,7 @@ import { useLoginMutation, UserCredentials } from "@/redux/auth";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { LOGIN_DEFAULT, LOGIN_MESSAGES } from "./Login.data";
 
 export const useLogin = () => {
   const [loginUser] = useLoginMutation();
@@ -11,10 +12,8 @@ export const useLogin = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<UserCredentials>({
-    defaultValues: {
-      email: "shivam@gmail.com",
-      password: "",
-    },
+    defaultValues: LOGIN_DEFAULT,
+    mode: "all",
   });
 
   const navigate = useNavigate();
@@ -26,8 +25,10 @@ export const useLogin = () => {
       const {
         data: { accessToken },
       } = await loginUser({ email, password }).unwrap();
-      toast({ message: "Logged In successfully!" });
+      toast({ message: LOGIN_MESSAGES.SUCCESS });
+
       localStorage.setItem("token", accessToken);
+
       navigate("/");
     } catch (error) {
       toast({ error });

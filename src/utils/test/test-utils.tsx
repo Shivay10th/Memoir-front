@@ -6,6 +6,8 @@ import { ThemeProvider } from "styled-components";
 import { ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import "@testing-library/jest-dom";
+import { mockServer } from "./mock-server";
 
 const AllProviders = ({ children }: PropsWithChildren) => {
   return (
@@ -22,5 +24,17 @@ const customRender = (
   options?: Omit<RenderOptions, "wrapper">
 ) => render(ui, { wrapper: AllProviders, ...options });
 
+beforeAll(() => {
+  mockServer.listen();
+});
+afterEach(() => {
+  mockServer.resetHandlers();
+});
+afterAll(() => {
+  mockServer.close();
+});
+
 export * from "@testing-library/react";
+export * from "@testing-library/user-event";
+export { store };
 export { customRender as render };
