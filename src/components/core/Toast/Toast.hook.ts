@@ -1,3 +1,4 @@
+import { MESSAGES } from "@/constant";
 import { hideToast, showToast } from "@/redux";
 import { AxiosGenericError } from "@/utils/http/http.type";
 import { AlertColor } from "@mui/material";
@@ -16,7 +17,8 @@ export const useToast = () => {
       let alertSeverity = severity;
       if (error) {
         const { response } = error as AxiosGenericError;
-        alertMessage = response?.data?.errorMessage ?? "Something went wrong!";
+        alertMessage =
+          response?.data?.errorMessage ?? MESSAGES.DEFAULT_SERVER_ERROR;
         alertSeverity = "error";
       }
       dispatch(
