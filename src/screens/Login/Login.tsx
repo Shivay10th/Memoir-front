@@ -1,6 +1,6 @@
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import { useLogin } from "./Login.controller";
-import { StyledBox, StyledForm } from "@/components";
+import { InputBox, StyledBox, StyledForm } from "@/components";
 import { LOGIN_FORM_ERRORS } from "./Login.data";
 
 const Login = () => {
@@ -9,15 +9,15 @@ const Login = () => {
     <StyledBox>
       <div>
         <StyledForm onSubmit={handleSubmit(handleLogin)}>
-          <TextField
+          <InputBox
             {...register("email", {
               required: LOGIN_FORM_ERRORS.REQUIRED_EMAIL,
             })}
             label="Email"
             type="email"
+            errorMessage={errors.email?.message}
           />
-          <p>{errors.email?.message}</p>
-          <TextField
+          <InputBox
             {...register("password", {
               required: LOGIN_FORM_ERRORS.REQUIRED_PASSWORD,
               minLength: {
@@ -25,10 +25,10 @@ const Login = () => {
                 message: LOGIN_FORM_ERRORS.MINIMUM_PASSWORD_LENGTH,
               },
             })}
+            errorMessage={errors.password?.message}
             label="Password"
             type="Password"
           />
-          <p>{errors.password?.message}</p>
           <Button type="submit" variant="contained">
             Login
           </Button>
