@@ -3,7 +3,8 @@ import { useLoginMutation, UserCredentials } from "@/redux/auth";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { LOGIN_DEFAULT, LOGIN_MESSAGES } from "./Login.data";
+import { LOGIN_DEFAULT, LOGIN_MESSAGES, loginSchema } from "./Login.data";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const useLogin = () => {
   const [loginUser] = useLoginMutation();
@@ -14,6 +15,7 @@ export const useLogin = () => {
   } = useForm<UserCredentials>({
     defaultValues: LOGIN_DEFAULT,
     mode: "all",
+    resolver: yupResolver(loginSchema),
   });
 
   const navigate = useNavigate();
