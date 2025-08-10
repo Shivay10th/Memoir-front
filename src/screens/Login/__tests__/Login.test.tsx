@@ -84,7 +84,7 @@ describe("Login Screen", () => {
     );
   });
 
-  test("Should show inline errors when required fields are empty", async () => {
+  test("Should show inline errors when fields have invalid values", async () => {
     render(<Login />);
     const { email, password } = await getLoginScreenElements();
 
@@ -93,6 +93,12 @@ describe("Login Screen", () => {
 
     expect(
       screen.queryByText(LOGIN_FORM_ERRORS.REQUIRED_EMAIL)
+    ).toBeInTheDocument();
+
+    await userEvent.type(email, "Invalid Email");
+
+    expect(
+      screen.queryByText(LOGIN_FORM_ERRORS.VALID_EMAIL)
     ).toBeInTheDocument();
 
     await userEvent.click(password);

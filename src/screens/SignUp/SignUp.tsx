@@ -1,54 +1,44 @@
-import { Button, TextField } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { Button, LinearProgress } from "@mui/material";
 import { StyledBox, StyledForm } from "@/components/styles";
-import { useAuth } from "@/services/authentication/auth";
+import { useSignUp } from "./SignUp.controller";
+import { SIGNUP_FORM_FIELDS } from "./SignUp.data";
+import { InputBox } from "@/components";
 
 const SignUp = () => {
   const {
-    register,
+    errors,
     handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-  return null;
+    handleSignUp,
+    register,
+    checkForUserNameAvailability,
+    checkingAvailability,
+  } = useSignUp();
+
   return (
     <>
       <StyledBox>
-        <StyledForm
-          onSubmit={handleSubmit(async ({ email, password }) => {
-            await signUp({ email, password });
-            console.log(error);
-            if (!error) {
-              console.log("Sign up success");
-              // navigate("/login");
-            }
-            console.log(error);
-          })}
-        >
-          <TextField
-            {...register("email", {
-              required: "Email is required",
-            })}
-            type="email"
+        <StyledForm onSubmit={handleSubmit(handleSignUp)}>
+          <InputBox
+            {...register(SIGNUP_FORM_FIELDS.EMAIL)}
             label="Email"
+            type="email"
+            errorMessage={errors[SIGNUP_FORM_FIELDS.EMAIL]?.message}
           />
-          <p>{errors.email?.message}</p>
-          <TextField
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 5,
-                message: "Password must be greater than 5",
-              },
-            })}
+          <InputBox
+            {...register(SIGNUP_FORM_FIELDS.USERNAME)}
+            label="User Name"
+            onChange={({ target: { value } }) =>
+              checkForUserNameAvailability(value)
+            }
+            errorMessage={errors[SIGNUP_FORM_FIELDS.USERNAME]?.message}
+          />
+          {checkingAvailability && <LinearProgress />}
+          <InputBox
+            {...register(SIGNUP_FORM_FIELDS.PASSWORD)}
+            errorMessage={errors[SIGNUP_FORM_FIELDS.PASSWORD]?.message}
             label="Password"
-            type="password"
+            type="Password"
           />
-          <p>{errors.password?.message}</p>
           <Button type="submit" variant="outlined">
             Sign Up
           </Button>
