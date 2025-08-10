@@ -1,4 +1,4 @@
-import { useToast } from "@/components";
+import { ROUTES_PATH, useToast } from "@/components";
 import { useLoginMutation, UserCredentials } from "@/redux/auth";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
@@ -31,7 +31,7 @@ export const useLogin = () => {
 
       localStorage.setItem("token", accessToken);
 
-      navigate("/");
+      navigate(ROUTES_PATH.BASE);
     } catch (error) {
       toast({ error });
     }

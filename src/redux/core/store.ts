@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { authAPI } from "../auth";
+import { authApi } from "../auth";
 import { API_REDUCER, FEATURE_REDUCER } from "../common/reducer";
+import { userApi } from "../user";
 
 const rootReducer = combineReducers({
   ...FEATURE_REDUCER,
@@ -10,7 +11,9 @@ const rootReducer = combineReducers({
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authAPI.middleware),
+    getDefaultMiddleware()
+      .concat(authApi.middleware)
+      .concat(userApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
