@@ -5,4 +5,8 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media screen and (min-width: 480px) {
+    max-width: 500px;
+    margin-top: 50px;
+  }
 `;

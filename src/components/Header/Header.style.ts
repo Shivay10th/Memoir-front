@@ -9,40 +9,12 @@ export const HeaderWrapper = styled.header`
   height: 3.5rem;
   padding: 12px 24px;
   background-color: #fff;
+  position: relative;
   border-bottom: 1px solid #eaeaea;
   margin-bottom: 20px;
-  @media screen and (min-width: 480px) {
-    height: 4rem;
-  }
-`;
-
-export const NavSidBar = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "openMenu",
-})<NavMenuProp>`
-  height: ${({ openMenu }) => (openMenu ? "100%" : "0")};
-  display: ${({ openMenu }) => (openMenu ? "flex" : "none")};
-  position: absolute;
-  left: 0;
-  padding: 20px 20px;
-  width: 100%;
-  top: 3.5rem;
-  flex-direction: column;
-  background-color: #fff;
-  z-index: ${NavZIndex};
-  opacity: ${({ openMenu }) => (openMenu ? 1 : 0)};
-  ${({ openMenu }) => openMenu && `transform:translateX(0)`}
-  transition: all 200ms ease-out;
-  gap: 20px;
-  font-size: 14px;
-  @media screen and (min-width: 480px) {
-    display: none;
-  }
-`;
-
-export const NavBar = styled.nav`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   & .icon-button {
     padding: 0;
     svg {
@@ -50,6 +22,40 @@ export const NavBar = styled.nav`
       height: 24px;
       fill: ${({ theme }) => theme.palette.primary.main};
     }
+  }
+  @media screen and (min-width: 480px) {
+    height: 4rem;
+    & .icon-button {
+      display: none;
+    }
+  }
+`;
+
+export const BrandLogo = styled.div``;
+
+export const NavBar = styled.nav.withConfig({
+  shouldForwardProp: (prop) => prop !== "openMenu",
+})<NavMenuProp>`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 3.5rem;
+  left: 0;
+  z-index: ${NavZIndex};
+  width: 100%;
+  gap: 20px;
+  padding: 20px 20px;
+  background-color: #fff;
+  opacity: ${({ openMenu }) => (openMenu ? 1 : 0)};
+  font-size: 14px;
+  @media screen and (min-width: 480px) {
+    position: static;
+    opacity: 1;
+    flex-direction: row;
+    width: max-content;
+    padding: 0;
   }
 `;
 
@@ -64,5 +70,13 @@ export const NavigationLink = styled(NavLink)`
   &.active {
     color: #fff;
     background-color: #000;
+  }
+
+  @media screen and (min-width: 480px) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    border: none;
   }
 `;
