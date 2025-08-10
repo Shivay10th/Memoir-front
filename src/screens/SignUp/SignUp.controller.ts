@@ -32,6 +32,7 @@ export const useSignUp = () => {
   const toast = useToast();
 
   const checkForUserNameAvailability = useDebounce(async (name: unknown) => {
+    //TODO: Bug-> onBlur it is resting error state
     if (!name) return;
     try {
       const response = await userNameAvailability(name as string).unwrap();
