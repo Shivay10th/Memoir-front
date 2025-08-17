@@ -25,9 +25,9 @@ const SignUp = () => {
       <InputBox
         {...register(SIGNUP_FORM_FIELDS.USERNAME)}
         label="User Name"
-        onChange={({ target: { value } }) =>
-          checkForUserNameAvailability(value)
-        }
+        onChange={({ target: { value } }) => {
+          checkForUserNameAvailability(value);
+        }}
         errorMessage={errors[SIGNUP_FORM_FIELDS.USERNAME]?.message}
       />
       {checkingAvailability && <LinearProgress />}

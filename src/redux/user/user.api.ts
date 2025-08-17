@@ -3,7 +3,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { AvailableUserNameResponse } from "./user.type";
 import { AxiosResponse } from "axios";
 
-const USER_API_PATHS = {
+export const USER_API_PATHS = {
   USER_NAME_AVAILABILITY: "user/availability",
 };
 
