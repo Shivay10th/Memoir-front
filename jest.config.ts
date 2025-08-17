@@ -1,10 +1,8 @@
 import type { Config } from "jest";
 
-import { TextDecoder, TextEncoder } from "util";
-
 const config: Config = {
   preset: "ts-jest",
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-fixed-jsdom",
   roots: ["<rootDir>/src"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   transform: {
@@ -23,14 +21,6 @@ const config: Config = {
     "!src/**/*.d.ts",
   ],
   moduleDirectories: ["node_modules", "src/utils/test", "src"],
-  globals: {
-    TextDecoder,
-    TextEncoder,
-    Response,
-    Request,
-    BroadcastChannel,
-    TransformStream,
-  },
 };
 
 export default config;

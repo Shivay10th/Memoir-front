@@ -24,3 +24,9 @@ export const signupSchema = loginSchema.concat(
     ),
   })
 );
+
+export const SIGNUP_LABELS = {
+  EMAIL: "Email",
+  USERNAME: "User Name",
+  PASSWORD: "Password",
+};

@@ -1,6 +1,7 @@
 import { authSuccessHandlers } from "@/redux/auth/auth.handlers";
 import { setupServer } from "msw/node";
 import { http } from "msw";
+import { userHandlers } from "@/redux/user";
 
 /* Although it will work by default; msw does not need preflight handler */
 const preflightHandler = [
@@ -16,6 +17,10 @@ const preflightHandler = [
   }),
 ];
 
-const mockServer = setupServer(...preflightHandler, ...authSuccessHandlers);
+const mockServer = setupServer(
+  ...preflightHandler,
+  ...authSuccessHandlers,
+  ...userHandlers
+);
 
 export { mockServer };
