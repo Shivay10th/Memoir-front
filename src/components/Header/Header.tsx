@@ -34,14 +34,19 @@ const Header = () => {
             </NavigationLink>
           </>
         ) : (
-          <Button
-            onClick={() => {
-              logOut();
-              toggleSideBar();
-            }}
-          >
-            Logout
-          </Button>
+          <>
+            <NavigationLink to={ROUTES_PATH.NEW_POST}>
+              Create Post
+            </NavigationLink>
+            <Button
+              onClick={() => {
+                logOut();
+                toggleSideBar();
+              }}
+            >
+              Logout
+            </Button>
+          </>
         )}
       </NavBar>
     </HeaderWrapper>

@@ -17,8 +17,8 @@ export const useToast = () => {
       let alertSeverity = severity;
       if (error) {
         const { response } = error as AxiosGenericError;
-        alertMessage =
-          response?.data?.errorMessage ?? MESSAGES.DEFAULT_SERVER_ERROR;
+        console.log(response);
+        alertMessage = response?.message ?? MESSAGES.DEFAULT_SERVER_ERROR;
         alertSeverity = "error";
       }
       dispatch(

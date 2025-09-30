@@ -33,6 +33,7 @@ export const useLogin = () => {
 
       navigate(ROUTES_PATH.BASE);
     } catch (error) {
+      console.log(error);
       toast({ error });
     }
   }, []);
