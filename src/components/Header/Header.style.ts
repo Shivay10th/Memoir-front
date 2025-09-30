@@ -8,9 +8,9 @@ interface NavMenuProp {
 export const HeaderWrapper = styled.header`
   height: 3.5rem;
   padding: 12px 24px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.palette.background.paper};
   position: relative;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
@@ -47,7 +47,7 @@ export const NavBar = styled.nav.withConfig({
   width: 100%;
   gap: 20px;
   padding: 20px 20px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.palette.background.paper};
   opacity: ${({ openMenu }) => (openMenu ? 1 : 0)};
   font-size: 14px;
   @media screen and (min-width: 480px) {
@@ -61,15 +61,15 @@ export const NavBar = styled.nav.withConfig({
 
 export const NavigationLink = styled(NavLink)`
   display: inline-block;
-  color: #000;
+  color: ${({ theme }) => theme.palette.primary.main};
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #000;
+  border: 1px solid ${({ theme }) => theme.palette.primary.main};
   width: 100%;
   text-decoration: none;
   &.active {
-    color: #fff;
-    background-color: #000;
+    color: ${({ theme }) => theme.palette.primary.contrastText};
+    background-color: ${({ theme }) => theme.palette.primary.dark};
   }
 
   @media screen and (min-width: 480px) {

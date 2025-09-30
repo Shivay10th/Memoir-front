@@ -2,7 +2,7 @@ import { useAuth } from "@/hooks";
 import { Outlet, Navigate } from "react-router-dom";
 
 interface AuthRouteProps {
-  requiredAuth?: false;
+  requiredAuth?: boolean;
   redirectTo?: string;
 }
 

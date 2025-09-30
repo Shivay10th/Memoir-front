@@ -2,7 +2,10 @@ import { BaseQueryFn } from "@reduxjs/toolkit/query";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export type AxiosGenericError = AxiosError<{
-  errorMessage: string;
+  message: string;
+  success: boolean;
+  errorCode: string;
+  timeStamp: string;
 }>;
 
 type BaseQueryConfig = AxiosRequestConfig;

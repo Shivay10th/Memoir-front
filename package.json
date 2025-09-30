@@ -27,8 +27,8 @@
     "react-hook-form": "^7.53.2",
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.27.0",
-    "slate": "^0.103.0",
-    "slate-react": "^0.110.1",
+    "slate": "^0.118.0",
+    "slate-react": "^0.117.4",
     "styled-components": "^6.1.13",
     "yup": "^1.7.0"
   },
