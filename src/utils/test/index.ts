@@ -1,2 +1,2 @@
-export * from "./test-utils";
-export * from "./svgMock";
+export * from './test-utils'
+export * from './svgMock'

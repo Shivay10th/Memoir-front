@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CreatePostContainer = styled.div`
   width: 100%;
-`;
+`
 
 export const PostTitleTextArea = styled.textarea`
   height: 60px;
@@ -12,7 +12,7 @@ export const PostTitleTextArea = styled.textarea`
   border: none;
   outline: none;
   width: 100%;
-`;
+`
 
 export const EditorContainer = styled.div`
   display: flex;
@@ -22,8 +22,8 @@ export const EditorContainer = styled.div`
   width: 100%;
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   padding: ${({ theme }) => theme.spacing(4, 8)};
-`;
+`
 
-export const EditorHeader = styled.div``;
+export const EditorHeader = styled.div``
 
-export const EditorBody = styled.div``;
+export const EditorBody = styled.div``

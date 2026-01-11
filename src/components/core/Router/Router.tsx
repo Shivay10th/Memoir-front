@@ -1,8 +1,8 @@
-import { Route, Routes } from "react-router-dom";
-import { ROUTES_PATH } from "./Router.data";
-import { AuthRoute } from "./ProtectedRoute";
-import { Layout } from "@/components";
-import { CreatePost, Home, Login, SignUp } from "@/screens";
+import { Route, Routes } from 'react-router'
+import { ROUTES_PATH } from './Router.data'
+import { AuthRoute } from './ProtectedRoute'
+import { Layout } from '@/components'
+import { CreatePost, Home, Login, SignUp } from '@/screens'
 
 const Router = () => {
   return (
@@ -16,6 +16,6 @@ const Router = () => {
         </Route>
       </Route>
     </Routes>
-  );
-};
-export default Router;
+  )
+}
+export default Router

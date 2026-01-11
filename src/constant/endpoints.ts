@@ -1,9 +1,9 @@
 export const ENDPOINTS = {
   AUTH: {
-    LOGIN: "/auth/login",
-    SIGN_UP: "/auth/signup",
+    LOGIN: '/auth/login',
+    SIGN_UP: '/auth/signup',
   },
-} as const;
+} as const
 
 export type Route =
-  (typeof ENDPOINTS)[keyof typeof ENDPOINTS][keyof (typeof ENDPOINTS)[keyof typeof ENDPOINTS]];
+  (typeof ENDPOINTS)[keyof typeof ENDPOINTS][keyof (typeof ENDPOINTS)[keyof typeof ENDPOINTS]]

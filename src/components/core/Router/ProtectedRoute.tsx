@@ -1,19 +1,19 @@
-import { useAuth } from "@/hooks";
-import { Outlet, Navigate } from "react-router-dom";
+import { useAuth } from '@/hooks'
+import { Outlet, Navigate } from 'react-router'
 
 interface AuthRouteProps {
-  requiredAuth?: boolean;
-  redirectTo?: string;
+  requiredAuth?: boolean
+  redirectTo?: string
 }
 
 export const AuthRoute = ({
   requiredAuth = false,
-  redirectTo = "/",
+  redirectTo = '/',
 }: AuthRouteProps) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth()
 
-  if (requiredAuth && !isAuthenticated) return <Navigate to="/login" />;
-  if (!requiredAuth && isAuthenticated) return <Navigate to={redirectTo} />;
+  if (requiredAuth && !isAuthenticated) return <Navigate to="/login" />
+  if (!requiredAuth && isAuthenticated) return <Navigate to={redirectTo} />
 
-  return <Outlet />;
-};
+  return <Outlet />
+}

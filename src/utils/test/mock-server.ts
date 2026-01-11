@@ -1,26 +1,26 @@
-import { authSuccessHandlers } from "@/redux/auth/auth.handlers";
-import { setupServer } from "msw/node";
-import { http } from "msw";
-import { userHandlers } from "@/redux/user";
+import { authSuccessHandlers } from '@/redux/auth/auth.handlers'
+import { setupServer } from 'msw/node'
+import { http } from 'msw'
+import { userHandlers } from '@/redux/user'
 
 /* Although it will work by default; msw does not need preflight handler */
 const preflightHandler = [
-  http.options("*", () => {
+  http.options('*', () => {
     return new Response(null, {
       status: 204,
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
-        "Access-Control-Allow-Headers": "*",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+        'Access-Control-Allow-Headers': '*',
       },
-    });
+    })
   }),
-];
+]
 
 const mockServer = setupServer(
   ...preflightHandler,
   ...authSuccessHandlers,
-  ...userHandlers
-);
+  ...userHandlers,
+)
 
-export { mockServer };
+export { mockServer }

@@ -1,9 +1,9 @@
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-const NavZIndex = 20;
+import styled from 'styled-components'
+import { NavLink } from 'react-router'
+const NavZIndex = 20
 
 interface NavMenuProp {
-  openMenu: boolean;
+  openMenu: boolean
 }
 export const HeaderWrapper = styled.header`
   height: 3.5rem;
@@ -29,12 +29,12 @@ export const HeaderWrapper = styled.header`
       display: none;
     }
   }
-`;
+`
 
-export const BrandLogo = styled.div``;
+export const BrandLogo = styled.div``
 
 export const NavBar = styled.nav.withConfig({
-  shouldForwardProp: (prop) => prop !== "openMenu",
+  shouldForwardProp: (prop) => prop !== 'openMenu',
 })<NavMenuProp>`
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@ export const NavBar = styled.nav.withConfig({
     width: max-content;
     padding: 0;
   }
-`;
+`
 
 export const NavigationLink = styled(NavLink)`
   display: inline-block;
@@ -79,4 +79,4 @@ export const NavigationLink = styled(NavLink)`
     width: max-content;
     border: none;
   }
-`;
+`

@@ -1,3 +1,3 @@
-export { default as Login } from "./Login";
+export { default as Login } from './Login'
 
-export * from "./Login.data";
+export * from './Login.data'

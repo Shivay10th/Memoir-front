@@ -1,21 +1,21 @@
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton } from '@mui/material'
 import {
   BrandLogo,
   HeaderWrapper,
   NavBar,
   NavigationLink,
-} from "./Header.style";
-import { CloseIcon, MenuIcon } from "@/assets/icons";
-import { useCallback, useState } from "react";
-import { ROUTES_PATH } from "../core";
-import { useAuth } from "@/hooks";
+} from './Header.style'
+import { CloseIcon, MenuIcon } from '@/assets/icons'
+import { useCallback, useState } from 'react'
+import { ROUTES_PATH } from '../core'
+import { useAuth } from '@/hooks'
 
 const Header = () => {
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false)
   const toggleSideBar = useCallback(() => {
-    setOpenMenu((previous) => !previous);
-  }, []);
-  const { isAuthenticated, logOut } = useAuth();
+    setOpenMenu((previous) => !previous)
+  }, [])
+  const { isAuthenticated, logOut } = useAuth()
 
   return (
     <HeaderWrapper>
@@ -40,8 +40,8 @@ const Header = () => {
             </NavigationLink>
             <Button
               onClick={() => {
-                logOut();
-                toggleSideBar();
+                logOut()
+                toggleSideBar()
               }}
             >
               Logout
@@ -50,7 +50,7 @@ const Header = () => {
         )}
       </NavBar>
     </HeaderWrapper>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

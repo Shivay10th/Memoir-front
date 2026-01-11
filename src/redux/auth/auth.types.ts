@@ -1,16 +1,16 @@
 export interface UserCredentials {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 export interface UserInfo extends UserCredentials {
-  username: string;
+  username: string
 }
 
 export interface LoginResponse {
-  accessToken: string;
+  accessToken: string
 }
 
 export interface SignUpResponse {
-  message: string;
+  message: string
 }

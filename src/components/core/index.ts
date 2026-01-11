@@ -1,5 +1,5 @@
-export * from "./Router";
+export * from './Router'
 
-export * from "./Toast";
+export * from './Toast'
 
-export * from "./InputBox";
+export * from './InputBox'

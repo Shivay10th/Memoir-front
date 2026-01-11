@@ -1,10 +1,10 @@
-import { Button } from "@mui/material";
-import { useLogin } from "./Login.controller";
-import { InputBox, StyledForm } from "@/components";
-import { LOGIN_FORM_FIELDS } from "./Login.data";
+import { Button } from '@mui/material'
+import { useLogin } from './Login.controller'
+import { InputBox, StyledForm } from '@/components'
+import { LOGIN_FORM_FIELDS } from './Login.data'
 
 const Login = () => {
-  const { errors, handleSubmit, register, handleLogin } = useLogin();
+  const { errors, handleSubmit, register, handleLogin } = useLogin()
   return (
     <StyledForm onSubmit={handleSubmit(handleLogin)}>
       <InputBox
@@ -23,7 +23,7 @@ const Login = () => {
         Login
       </Button>
     </StyledForm>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
