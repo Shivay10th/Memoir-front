@@ -1,2 +1,2 @@
-export * from "./Container.styled";
-export * from "./StyledForm.styled";
+export * from './Container.styled'
+export * from './StyledForm.styled'

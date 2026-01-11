@@ -1,1 +1,1 @@
-export * from "./utils/Toast";
+export * from './utils/Toast'

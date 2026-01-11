@@ -1,2 +1,2 @@
-export * from "./baseQuery";
-export * from "./http.type";
+export * from './baseQuery'
+export * from './http.type'

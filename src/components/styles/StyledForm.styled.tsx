@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledForm = styled.form`
   margin: 10px auto;
@@ -9,4 +9,4 @@ export const StyledForm = styled.form`
     max-width: 500px;
     margin-top: 50px;
   }
-`;
+`

@@ -1,4 +1,4 @@
 export interface AvailableUserNameResponse {
-  message: string;
-  value: boolean;
+  message: string
+  value: boolean
 }

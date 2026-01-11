@@ -1,15 +1,15 @@
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form'
 import {
   SIGNUP_DEFAULTS,
   SIGNUP_FORM_FIELDS,
   signupSchema,
-} from "./SignUp.data";
-import { UserInfo, useSignUpMutation } from "@/redux/auth";
-import { ROUTES_PATH, useToast } from "@/components";
-import { useLazyUserNameAvailabilityQuery } from "@/redux/user";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useDebounce } from "@/hooks/useDebounce";
-import { useNavigate } from "react-router-dom";
+} from './SignUp.data'
+import { UserInfo, useSignUpMutation } from '@/redux/auth'
+import { ROUTES_PATH, useToast } from '@/components'
+import { useLazyUserNameAvailabilityQuery } from '@/redux/user'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useDebounce } from '@/hooks/useDebounce'
+import { useNavigate } from 'react-router'
 
 export const useSignUp = () => {
   const {
@@ -20,43 +20,43 @@ export const useSignUp = () => {
     formState: { errors },
   } = useForm<UserInfo>({
     defaultValues: SIGNUP_DEFAULTS,
-    mode: "all",
+    mode: 'all',
     resolver: yupResolver(signupSchema),
-  });
+  })
 
-  const [signUp] = useSignUpMutation();
+  const [signUp] = useSignUpMutation()
   const [userNameAvailability, { isFetching: checkingAvailability }] =
-    useLazyUserNameAvailabilityQuery();
+    useLazyUserNameAvailabilityQuery()
 
-  const navigate = useNavigate();
-  const toast = useToast();
+  const navigate = useNavigate()
+  const toast = useToast()
 
   const checkForUserNameAvailability = useDebounce(async (name: unknown) => {
     //TODO: Bug-> onBlur it is resting error state
-    if (!name) return;
+    if (!name) return
     try {
-      const response = await userNameAvailability(name as string).unwrap();
+      const response = await userNameAvailability(name as string).unwrap()
       if (!response.data.value)
         setError(SIGNUP_FORM_FIELDS.USERNAME, {
           message: response.data.message,
-        });
-      else clearErrors(SIGNUP_FORM_FIELDS.USERNAME);
+        })
+      else clearErrors(SIGNUP_FORM_FIELDS.USERNAME)
     } catch (error) {
-      toast({ error });
+      toast({ error })
     }
-  }, 500);
+  }, 500)
 
   const handleSignUp = async (userInfo: UserInfo) => {
     try {
       const {
         data: { message },
-      } = await signUp(userInfo).unwrap();
-      toast({ message });
-      navigate(ROUTES_PATH.LOGIN);
+      } = await signUp(userInfo).unwrap()
+      toast({ message })
+      navigate(ROUTES_PATH.LOGIN)
     } catch (error) {
-      toast({ error });
+      toast({ error })
     }
-  };
+  }
 
   return {
     register,
@@ -65,5 +65,5 @@ export const useSignUp = () => {
     handleSignUp,
     checkForUserNameAvailability,
     checkingAvailability,
-  };
-};
+  }
+}

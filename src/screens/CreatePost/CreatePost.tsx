@@ -4,7 +4,7 @@ import {
   EditorContainer,
   EditorHeader,
   PostTitleTextArea,
-} from "./CreatePost.style";
+} from './CreatePost.style'
 
 const CreatePost = () => {
   return (
@@ -22,7 +22,7 @@ const CreatePost = () => {
         <EditorBody></EditorBody>
       </EditorContainer>
     </CreatePostContainer>
-  );
-};
+  )
+}
 
-export default CreatePost;
+export default CreatePost

@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router'
 
 export const useAuth = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const isAuthenticated = localStorage.getItem("token") ?? false;
+  const isAuthenticated = localStorage.getItem('token') ?? false
 
   const logOut = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
-  return { isAuthenticated, logOut };
-};
+    localStorage.removeItem('token')
+    navigate('/')
+  }
+  return { isAuthenticated, logOut }
+}
