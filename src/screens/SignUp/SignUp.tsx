@@ -1,8 +1,8 @@
-import { Button, LinearProgress } from '@mui/material'
-import { StyledForm } from '@/components/styles'
-import { useSignUp } from './SignUp.controller'
-import { SIGNUP_FORM_FIELDS } from './SignUp.data'
-import { InputBox } from '@/components'
+import { Button, LinearProgress } from "@mui/material";
+import { StyledForm } from "@/components/styles";
+import { useSignUp } from "./SignUp.controller";
+import { SIGNUP_FORM_FIELDS } from "./SignUp.data";
+import { InputBox } from "@/components";
 
 const SignUp = () => {
   const {
@@ -12,7 +12,7 @@ const SignUp = () => {
     register,
     checkForUserNameAvailability,
     checkingAvailability,
-  } = useSignUp()
+  } = useSignUp();
 
   return (
     <StyledForm onSubmit={handleSubmit(handleSignUp)}>
@@ -26,11 +26,13 @@ const SignUp = () => {
         {...register(SIGNUP_FORM_FIELDS.USERNAME)}
         label="User Name"
         onChange={({ target: { value } }) => {
-          checkForUserNameAvailability(value)
+          checkForUserNameAvailability(value);
         }}
         errorMessage={errors[SIGNUP_FORM_FIELDS.USERNAME]?.message}
       />
-      {checkingAvailability && <LinearProgress />}
+      {checkingAvailability && <LinearProgress />
+			}
+			
       <InputBox
         {...register(SIGNUP_FORM_FIELDS.PASSWORD)}
         errorMessage={errors[SIGNUP_FORM_FIELDS.PASSWORD]?.message}
@@ -41,7 +43,7 @@ const SignUp = () => {
         Sign Up
       </Button>
     </StyledForm>
-  )
-}
+  );
+};
 
 export default SignUp

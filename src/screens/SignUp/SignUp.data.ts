@@ -3,7 +3,7 @@ import { LOGIN_FORM_ERRORS, LOGIN_FORM_FIELDS, loginSchema } from '../Login'
 
 export const SIGNUP_FORM_FIELDS = {
   ...LOGIN_FORM_FIELDS,
-  USERNAME: 'username',
+  USERNAME: 'userName',
 } as const
 
 export const SIGNUP_DEFAULTS = {

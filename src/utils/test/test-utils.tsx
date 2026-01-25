@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import { ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router'
 import '@testing-library/jest-dom'
 import { mockServer } from './mock-server'
 
