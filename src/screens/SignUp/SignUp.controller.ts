@@ -18,7 +18,7 @@ export const useSignUp = () => {
     handleSubmit,
     clearErrors,
     formState: { errors },
-  } = useForm<UserInfo>({
+  } = useForm({
     defaultValues: SIGNUP_DEFAULTS,
     mode: 'all',
     resolver: yupResolver(signupSchema),
@@ -34,6 +34,7 @@ export const useSignUp = () => {
   const checkForUserNameAvailability = useDebounce(async (name: unknown) => {
     //TODO: Bug-> onBlur it is resting error state
     if (!name) return
+
     try {
       const response = await userNameAvailability(name as string).unwrap()
       if (!response.data.value)
@@ -51,7 +52,9 @@ export const useSignUp = () => {
       const {
         data: { message },
       } = await signUp(userInfo).unwrap()
+
       toast({ message })
+
       navigate(ROUTES_PATH.LOGIN)
     } catch (error) {
       toast({ error })

@@ -4,7 +4,7 @@ export interface UserCredentials {
 }
 
 export interface UserInfo extends UserCredentials {
-  username: string
+  userName: string
 }
 
 export interface LoginResponse {

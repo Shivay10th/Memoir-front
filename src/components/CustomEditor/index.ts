@@ -1,1 +1,1 @@
-export { default as CustomEditor } from "./CustomEditor";
+export { default as CustomRichTextEditor } from './CustomRichTextEditor'
